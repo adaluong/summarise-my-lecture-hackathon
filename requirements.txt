@@ -1,0 +1,2 @@
+chat-downloader
+youtube_transcript_api
