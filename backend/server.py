@@ -1,11 +1,14 @@
 from flask import Flask, request
-import get_transcript
+from get_transcript import id_to_transcript
+from get_chat import id_to_chat
+from magic import magic
+from get_video import id_to_name
 
 APP = Flask(__name__)
 
 @APP.route("/dummy_transcript", methods=["GET"])
 def get_dummy_transcript():
-    transcript = get_transcript.id_to_transcript("Vi231_PujYI")
+    transcript = id_to_transcript("Vi231_PujYI")
 
     transcriptString = "\n".join(transcript)
 
@@ -17,7 +20,7 @@ def get_dummy_transcript():
 def get_transcript_from_id():
     video_id = request.args.get("id")
 
-    transcript = get_transcript.id_to_transcript(video_id)
+    transcript = id_to_transcript(video_id)
 
     transcriptString = "\n".join(transcript)
 
@@ -29,9 +32,16 @@ def get_transcript_from_id():
 def get_magic():
     video_id = request.args.get("id")
 
+    name = id_to_name(id_to_transcript(video_id), id_to_chat(video_id))
+    qna = magic(video_id)
+
     return {
-        "name": "COMP1511 lecture",
-        "qna": [
+        "name": name,
+        "qna": qna
+    }
+
+'''
+[
             {
                 "question": "how do i do a linked list",
                 "answer": "i love linked lists !"
@@ -41,4 +51,4 @@ def get_magic():
                 "answer": "the exam is tomorrow"
             }
         ]
-    }
+'''

@@ -11,6 +11,8 @@ with open("chat.txt") as g:
 
 def magic(transcript, chat):
     # keywords = ["ask", "questions", "ask", "question"]
+    qna = []
+
     for i in range(len(transcript) - 20):
         line = transcript[i]
         if 'question' in line:
@@ -26,8 +28,12 @@ def magic(transcript, chat):
                     print(f'{potential_question}')
                     print(f'Question: {" ".join(question)}') 
                     print(f'Answer: {" ".join(answer)}\n')
-
-    qna = []
+                    qna.append(
+                        {
+                            "question": "".join(question),
+                            "answer": "".join(answer)
+                        }
+                    )
 
     return qna
 
