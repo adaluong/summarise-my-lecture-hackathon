@@ -30,8 +30,8 @@ def magic(transcript, chat):
                     print(f'Answer: {" ".join(answer)}\n')
                     qna.append(
                         {
-                            "question": "".join(question),
-                            "answer": "".join(answer)
+                            "question": " ".join(question),
+                            "answer": " ".join(answer)
                         }
                     )
 

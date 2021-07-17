@@ -32,8 +32,8 @@ def get_transcript_from_id():
 def get_magic():
     video_id = request.args.get("id")
 
-    name = id_to_name(id_to_transcript(video_id), id_to_chat(video_id))
-    qna = magic(video_id)
+    name = id_to_name(video_id)
+    qna = magic(id_to_transcript(video_id), id_to_chat(video_id))
 
     return {
         "name": name,
