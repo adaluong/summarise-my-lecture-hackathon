@@ -1,0 +1,4 @@
+chat-downloader
+youtube_transcript_api
+flask
+python-dotenv
