@@ -1,3 +1,10 @@
 .Search {
   text-align: center;
+  width: 80%;
+  margin: auto;
+  min-width: 300px;
+}
+
+.formCard {
+  padding: 1rem;
 }

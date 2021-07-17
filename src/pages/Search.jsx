@@ -28,9 +28,9 @@ const Search = () => {
   return (
     <div className="Search">
       <h1>
-        Search here
+        Q&A Delivery Service
       </h1>
-      <Card>
+      <Card className="formCard">
         <Card.Body>
           <Form onSubmit={() => onSubmit(linkInput)}>
             <Form.Group className="mb-3" controlId="formVideoLink">

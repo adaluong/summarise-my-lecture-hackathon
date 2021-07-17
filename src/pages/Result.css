@@ -1,3 +1,25 @@
 .Result {
+  width: 80%;
+  margin: auto;
+  min-width: 300px;
+}
+
+h1 {
   text-align: center;
+}
+
+.qna {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.qnaCard {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.qnaAnswer {
+  padding: 1em;
 }

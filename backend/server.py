@@ -15,7 +15,7 @@ def get_dummy_transcript():
 
 @APP.route("/transcript", methods=["get"])
 def get_transcript_from_id():
-    video_id = request.args.get("videoId")
+    video_id = request.args.get("id")
 
     transcript = get_transcript.id_to_transcript(video_id)
 
@@ -24,3 +24,21 @@ def get_transcript_from_id():
     return {
         "transcript": transcriptString
     } 
+
+@APP.route("/magic", methods=["get"])
+def get_magic():
+    video_id = request.args.get("id")
+
+    return {
+        "name": "COMP1511 lecture",
+        "qna": [
+            {
+                "question": "how do i do a linked list",
+                "answer": "i love linked lists !"
+            },
+            {
+                "question": "when is the exam",
+                "answer": "the exam is tomorrow"
+            }
+        ]
+    }
