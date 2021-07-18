@@ -26,12 +26,15 @@ def magic2(transcript, chat):
     return qna
 
 def magic(transcript, chat):
-    # keywords = ["ask", "questions", "ask", "question"]
+    keywords = ["ask", "questions", "ask", "question"]
     qna = []
 
     for i in range(len(transcript) - 20):
         line = transcript[i]
-        if 'question' in line:
+        line_set = set(line.split(" "))
+        keywords_set = set(keywords)
+        
+        if not keywords_set.isdisjoint(line_set):
             question = transcript[i:i+3]
             answer = transcript[i+3:i+20]
 
