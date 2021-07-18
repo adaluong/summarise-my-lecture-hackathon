@@ -28,7 +28,7 @@ const Search = () => {
   return (
     <div className="Search">
       <h1>
-        Q&A Delivery Service
+        Summarise My Lecture
       </h1>
       <Card className="formCard">
         <Card.Body>

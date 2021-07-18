@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Result from './pages/Result';
@@ -12,7 +12,7 @@ const App = () => {
     <Router>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand as={Link} to="/">Q&A Delivery Service</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">Summarise My Lecture</Navbar.Brand>
         </Container>
       </Navbar>
       <Route exact path='/' component={Search} />
