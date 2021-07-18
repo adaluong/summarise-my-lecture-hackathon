@@ -9,11 +9,19 @@ const Result = () => {
   const [videoName, setVideoName] = useState("");
 
   const timestampToSeconds = (timestamp) => {
-    let hours = timestamp.split(":")[0];
-    let seconds = timestamp.split(":")[1];
-    let answer = parseInt(hours) * 60 + parseInt(seconds)
-    console.log(answer);
-    return answer;
+    const splitTime = timestamp.split(":");
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+    if (splitTime.length === 2) {
+      minutes = splitTime[0];
+      seconds = splitTime[1];
+    } else if (splitTime.length == 3) {
+      hours = splitTime[0];
+      minutes = splitTime[1];
+      seconds = splitTime[2];
+    }
+    return parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds);
   }
 
   useEffect(() => {
