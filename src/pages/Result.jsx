@@ -8,6 +8,14 @@ const Result = () => {
   const [qna, setQna] = useState([]);
   const [videoName, setVideoName] = useState("");
 
+  const timestampToSeconds = (timestamp) => {
+    let hours = timestamp.split(":")[0];
+    let seconds = timestamp.split(":")[1];
+    let answer = parseInt(hours) * 60 + parseInt(seconds)
+    console.log(answer);
+    return answer;
+  }
+
   useEffect(() => {
     // this code is executed when the page is loaded/reloaded
     // fetch sends a query to our server with the id of the Youtube video
@@ -27,9 +35,10 @@ const Result = () => {
       </h1>
       <div className="qna">
         {qna.map((element, idx) => (
-          <Card className="qnaCard" id={idx}>
+          <Card className="qnaCard" key={idx}>
             <Card.Header className="qnaQuestion">
-              <strong>Q: </strong>{element.question}
+              <strong><a rel="noreferrer" target="_blank" href={`https://youtube.com/watch?v=${videoId}&t=${timestampToSeconds(element.time)}`}>{element.time}</a> </strong>
+              {element.question}
             </Card.Header>
             <Card.Text className="qnaAnswer">
               <strong>A: </strong>{element.answer}

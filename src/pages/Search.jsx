@@ -1,11 +1,12 @@
 import './Search.css';
 import React, { useState } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button, Card, Nav } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 const Search = () => {
   const history = useHistory();
   const [linkInput, setLinkInput] = useState("");
+  const[activeTab, setActiveTab] = useState("youtube");
 
   const onChange = (e) => {
     e.preventDefault();
@@ -31,17 +32,47 @@ const Search = () => {
         Q&A Delivery Service
       </h1>
       <Card className="formCard">
-        <Card.Body>
-          <Form onSubmit={() => onSubmit(linkInput)}>
-            <Form.Group className="mb-3" controlId="formVideoLink">
-              <Form.Control
-                type="text"
-                placeholder="Enter Youtube link"
-                onChange={onChange}
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">Summarise!</Button>
-          </Form>
+        <Card.Header>
+          <Nav variant="tabs" defaultActiveKey="youtubeTab">
+            <Nav.Item>
+              <Nav.Link eventKey="youtubeTab" onSelect={() => setActiveTab("youtube")}>
+                Youtube
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="uploadTab" onSelect={() => setActiveTab("upload")}>
+                Upload
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Card.Header>
+        <Card.Body className="formCardBody">
+          {activeTab === "youtube" &&(
+            <Form name="youtubeForm" onSubmit={() => onSubmit(linkInput)}>
+              <Form.Group className="mb-3" controlId="formVideoLink">
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Youtube link"
+                  onChange={onChange}
+                />
+              </Form.Group>
+              <Button variant="primary" type="submit">Summarise!</Button>
+            </Form>)}
+          {activeTab === "upload" && (
+            <Form name="uploadForm">
+              <Form.Group controlId="uploadTranscript" className="mb-3">
+                <Form.Label>Upload lecture recording</Form.Label>
+                <Form.Control type="file" />
+              </Form.Group>
+              <Form.Group controlId="uploadChat" className="mb-3">
+                <Form.Label>Upload chat records</Form.Label>
+                <Form.Control type="file" />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Summarise!
+              </Button>
+            </Form>
+          )}
         </Card.Body>
      </Card>
    </div>
