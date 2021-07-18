@@ -3,6 +3,8 @@ A web app that extracts questions from live lecture chats and finds the correspo
 
 Created in under 24 hours for the 2021 CSESoc Annual Hackathon.
 
+Watch the product pitch [here](https://www.youtube.com/watch?v=fJBVRQbtfBo&list=PLtdbwEd-4QWHZTWOyB2W73nn9hwAoLj6c&index=19). 
+
 ## how to start
 - `yarn start-backend` to start the server
 - `yarn start` to start the frontend
