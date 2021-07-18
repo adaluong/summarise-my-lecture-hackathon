@@ -1,4 +1,5 @@
-# hi
+# Summarise My Lecture
+
 
 ## how to start
 - `yarn start-backend` to start the server
