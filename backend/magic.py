@@ -9,6 +9,22 @@ with open("transcript.txt") as f:
 with open("chat.txt") as g:
     chat = [line.strip() for line in g.readlines()]
 
+def magic2(transcript, chat):
+    qna = []
+    qna = [
+            {
+                "question": "how do i do a linked list",
+                "answer": "i love linked lists !",
+                "time": "00:01"
+            },
+            {
+                "question": "when is the exam",
+                "answer": "the exam is tomorrow",
+                "time": "10:01"
+            }
+        ]
+    return qna
+
 def magic(transcript, chat):
     # keywords = ["ask", "questions", "ask", "question"]
     qna = []
@@ -23,6 +39,7 @@ def magic(transcript, chat):
             # print(f'Answer: {" ".join(answer)}\n')
         
             for comment in chat:
+                time = comment.split(" | ")[0]
                 potential_question = comment.split(" | ")[1]
                 if (fuzz.ratio(question, potential_question) > 48):
                     print(f'{potential_question}')
@@ -31,7 +48,8 @@ def magic(transcript, chat):
                     qna.append(
                         {
                             "question": " ".join(question),
-                            "answer": " ".join(answer)
+                            "answer": " ".join(answer),
+                            "time": time
                         }
                     )
 
@@ -41,7 +59,7 @@ if __name__ == '__main__':
 
     videoId = "4WBbrxZguqk"
     transcript = get_transcript.id_to_transcript(videoId)
-    chat = get_chat.    id_to_chat(videoId)
+    chat = get_chat.id_to_chat(videoId)
     
     print(magic(transcript,chat))
 

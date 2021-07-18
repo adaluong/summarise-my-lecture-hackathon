@@ -5,6 +5,10 @@
   min-width: 300px;
 }
 
-.formCard {
+.formCardBody {
   padding: 1rem;
+}
+
+.label {
+  display: block;
 }
